@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<commandSet>
+    <commands action="look" scriptVnum="1" usage="look &lt;entity&gt;" name="look" vnum="1"/>
+    <commands action="none" scriptVnum="0" usage="reload" name="reload" vnum="2"/>
+    <commands action="move" scriptVnum="5" usage="north" name="north" vnum="3"/>
+    <commands action="move" scriptVnum="5" usage="south" name="south" vnum="4"/>
+    <commands action="move" scriptVnum="5" usage="east" name="east" vnum="5"/>
+    <commands action="move" scriptVnum="5" usage="west" name="west" vnum="6"/>
+    <commands action="move" scriptVnum="5" usage="up" name="up" vnum="7"/>
+    <commands action="move" scriptVnum="5" usage="down" name="down" vnum="8"/>
+    <commands scriptVnum="109" usage="commands" name="commands" vnum="9"/>
+    <commands scriptVnum="107" usage="quit" name="quit" vnum="10"/>
+    <commands scriptVnum="108" usage="shutdown" name="shutdown" vnum="11"/>
+    <commands scriptVnum="113" usage="load" name="load" vnum="12"/>
+    <commands scriptVnum="114" usage="say" name="say" vnum="13"/>
+    <commands scriptVnum="115" usage="who" name="who" vnum="14"/>
+    <commands scriptVnum="116" usage="color [on|off]" name="color" vnum="15"/>
+    <commands scriptVnum="100" usage="mynew" name="mynew" vnum="16"/>
+    <commands scriptVnum="104" usage="qwadsad" name="qwerty" vnum="17"/>
+    <commands scriptVnum="105" usage="yyyyy" name="asdcsa" vnum="18"/>
+    <commands scriptVnum="1" usage="newcommand" name="command19" vnum="19"/>
+    <commands scriptVnum="117" usage="hrm." name="command20" vnum="20"/>
+</commandSet>

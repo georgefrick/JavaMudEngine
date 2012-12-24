@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<worldSet>
+    <worlds>
+        <description>This is the default world to fall back on</description>
+        <id>-1</id>
+        <name>defaultWorld</name>
+        <properties/>
+        <shortName>Default World</shortName>
+        <vnum>1</vnum>
+        <areas>
+            <description>This is the default area to fall back on</description>
+            <id>-1</id>
+            <name>defaultArea</name>
+            <properties/>
+            <shortName>Default Area</shortName>
+            <vnum>1</vnum>
+            <rooms indoor="true" z="0" y="0" x="0">
+                <description>This is the default Room.</description>
+                <id>-1</id>
+                <name>defaultRoom</name>
+                <properties/>
+                <shortName>Default Room</shortName>
+                <vnum>1</vnum>
+            </rooms>
+            <rooms indoor="true" z="0" y="0" x="1">
+                <description>This is room two</description>
+                <id>-1</id>
+                <name>Room2</name>
+                <properties/>
+                <shortName>Room Two</shortName>
+                <vnum>2</vnum>
+            </rooms>
+            <rooms indoor="false" z="0" y="0" x="2">
+                <description>This is room three</description>
+                <id>-1</id>
+                <name>room3</name>
+                <properties/>
+                <shortName>Room three</shortName>
+                <vnum>3</vnum>
+            </rooms>
+        </areas>
+    </worlds>
+</worldSet>

@@ -1,0 +1,56 @@
+<project name="JavaMudengine" default="ccbuild" basedir=".">
+
+	<property name="source_root" value="src" />
+	<property name="source" value="${source_root}/java" />
+	<property name="build" value="build" />
+	<property name="lib" value="lib" />
+
+    <path id="classpath">
+		<fileset dir="${lib}" includes="**/*.jar" />
+	</path>
+
+	<target name="clean" description="Removes previous build.">
+		<delete dir="${build}" />
+	</target>
+
+	<target name="prepare" description="prepares for a new build">
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile">
+		<echo>Compiling Java MUD Engine.</echo>
+		<javac srcdir="${source}" destdir="${build}">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="JavaMudEngine.jar">
+			<fileset dir="${build}" includes="**/*.class" />
+			<fileset dir="${source}" includes="**/*.xml" />
+			<fileset dir="." includes="*.properties" />
+			<manifest>
+				<attribute name="Built-By" value="George Frick" />
+				<attribute name="Main-Class" value="com.s5games.mud.Main" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="ccbuild">
+		<antcall target="clean" />
+		<antcall target="prepare" />
+		<antcall target="compile" />
+		<antcall target="jar" />               
+	</target>
+
+	<target name="run" depends="jar">
+		<java classname="com.s5games.mud.Main" fork="true">
+			<classpath>
+				<path refid="classpath" />
+				<path location="JavaMudEngine.jar" />
+			</classpath>
+		</java>
+	</target>
+
+</project>
+

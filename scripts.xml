@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<scriptSet>
+    <scripts>
+        <description>reload command</description>
+        <script>game.reload(ch,args);&#xD;
+// nothing.</script>
+        <vnum>0</vnum>
+    </scripts>
+    <scripts>
+        <description>look command</description>
+        <script>var loc = ch.getLocation();&#xD;
+var dirs = new Array( &quot;north&quot;, &quot;south&quot;, &quot;east&quot;, &quot;west&quot;, &quot;up&quot;, &quot;down&quot; );&#xD;
+title = &quot;{1&quot; + loc.getName() + &quot; {5[{0 &quot;;&#xD;
+for( b = 0; b &lt; dirs.length; b++ ) {&#xD;
+    if( loc.getExit(dirs[b]) != null ) {&#xD;
+        title = title + dirs[b] + &quot; &quot;;&#xD;
+    }&#xD;
+}&#xD;
+title = title + &quot;{5]{0&quot;;&#xD;
+ch.writeln(title); &#xD;
+ch.writeln(&quot;{4&quot; + loc.getDescription() + &quot;{0&quot;); &#xD;
+people = loc.people.toArray();&#xD;
+for( a = 0; a &lt; people.length; a++) {&#xD;
+  if( people[a].equals(ch) ) {&#xD;
+      continue;&#xD;
+  } else {&#xD;
+      ch.writeln(people[a].getDescription() + &quot; is here.&quot;);&#xD;
+  }&#xD;
+}&#xD;
+objects = loc.contents.toArray();&#xD;
+for( a = 0; a &lt; objects.length; a++) {&#xD;
+      ch.writeln(objects[a].getDescription() + &quot; is here.&quot;);&#xD;
+}&#xD;
+</script>
+        <vnum>1</vnum>
+    </scripts>
+    <scripts>
+        <description>script 2</description>
+        <script>// script 2</script>
+        <vnum>2</vnum>
+    </scripts>
+    <scripts>
+        <description>blank script</description>
+        <script>ch.write('how did you get this to run');&#xD;
+</script>
+        <vnum>3</vnum>
+    </scripts>
+    <scripts>
+        <description>moves a char</description>
+        <script>a = ch.getLocation();
+ b = command.getName();
+ if( a.getExit(b) == null ) {
+ ch.writeln(&quot;You cannot move that direction&quot;);
+ } else {
+ x = a.getNewX(b);
+ y = a.getNewY(b);
+ z = a.getNewZ(b);
+ game.moveChar(ch,a,a.getParent().getRoom(x,y,z));
+ game.interpret(ch,&quot;look&quot;);
+ }</script>
+        <vnum>5</vnum>
+    </scripts>
+    <scripts>
+        <description>example trigger</description>
+        <script>// example trigger</script>
+        <vnum>10</vnum>
+    </scripts>
+    <scripts>
+        <description>examine command</description>
+        <script>ch.writeln(ch.getLocation().getName()); &#xD;
+ ch.writeln(ch.getLocation().getDescription()); ch.writeln(&quot;you looked at a room&quot;);</script>
+        <vnum>100</vnum>
+    </scripts>
+    <scripts>
+        <description>kill command</description>
+        <script>ch.writeln(ch.getLocation().getName()); &#xD;
+ ch.writeln(ch.getLocation().getDescription()); ch.writeln(&quot;you looked at a room&quot;);</script>
+        <vnum>101</vnum>
+    </scripts>
+    <scripts>
+        <description>qwerty command</description>
+        <script>ch.writeln(ch.getLocation().getName()); &#xD;
+ ch.writeln(ch.getLocation().getDescription()); ch.writeln(&quot;you looked at a room with a reloaded script (thrice).&quot;);</script>
+        <vnum>104</vnum>
+    </scripts>
+    <scripts>
+        <description>test create command</description>
+        <script>// this command does nothing.</script>
+        <vnum>105</vnum>
+    </scripts>
+    <scripts>
+        <description>test create command</description>
+        <script>// this command does nothing.(2)</script>
+        <vnum>106</vnum>
+    </scripts>
+    <scripts>
+        <description>Quit Command</description>
+        <script>ch.writeln(&quot;You quit.&quot;);&#xD;
+ch.quit();&#xD;
+</script>
+        <vnum>107</vnum>
+    </scripts>
+    <scripts>
+        <description>Shutdown Command</description>
+        <script>main.shutDown(&quot;Shutdown by user.&quot;);&#xD;
+</script>
+        <vnum>108</vnum>
+    </scripts>
+    <scripts>
+        <description>Lists commands</description>
+        <script>commands = game.commands.toArray();&#xD;
+for( a = 0; a &lt; commands.length; a++) {&#xD;
+  ch.writeln(commands[a].getName() + &quot; : &quot; + commands[a].getUsage());&#xD;
+}&#xD;
+ch.writeln(&quot;commands: &quot; + commands.length);&#xD;
+&#xD;
+</script>
+        <vnum>109</vnum>
+    </scripts>
+    <scripts>
+        <description>blank 2</description>
+        <script>// blank 2</script>
+        <vnum>110</vnum>
+    </scripts>
+    <scripts>
+        <description>script 2</description>
+        <script>// script 2</script>
+        <vnum>111</vnum>
+    </scripts>
+    <scripts>
+        <description>script 2</description>
+        <script>// script 2</script>
+        <vnum>112</vnum>
+    </scripts>
+    <scripts>
+        <description>Load Command</description>
+        <script>myargs = args.split(&quot; &quot;);&#xD;
+mob = game.getWorldService().findActor(parseInt(myargs[0]));&#xD;
+mob.setLocation(ch.getLocation());&#xD;
+ch.getLocation().addActor(mob);&#xD;
+ch.writeln(mob.getName() + &quot; added to room &quot; + ch.getLocation().getName() );&#xD;
+&#xD;
+&#xD;
+</script>
+        <vnum>113</vnum>
+    </scripts>
+    <scripts>
+        <description>Say Command</description>
+        <script>ch.writeln(&quot;You say {3'{0&quot; + args + &quot;{3'{0&quot;);&#xD;
+people  = ch.getLocation().people.toArray();&#xD;
+for( a = 0; a &lt; people.length; a++) {&#xD;
+    if( ch.equals(people[a]) )&#xD;
+        continue;&#xD;
+&#xD;
+    people[a].writeln(&quot;\n\r&quot; + ch.getName() + &quot; says {3'{0&quot; + args + &quot;{3'{0&quot;);&#xD;
+}&#xD;
+&#xD;
+&#xD;
+&#xD;
+</script>
+        <vnum>114</vnum>
+    </scripts>
+    <scripts>
+        <description>who command</description>
+        <script>people = game.players.toArray();&#xD;
+ch.writeln(&quot;    {4Players Online{0    &quot;);&#xD;
+ch.writeln(&quot;{3----------------------{0&quot;);&#xD;
+for( a = 0; a &lt; people.length; a++) {&#xD;
+    ch.writeln(people[a].getName());&#xD;
+}&#xD;
+ch.writeln(&quot;Total players found: &quot; + people.length);&#xD;
+</script>
+        <vnum>115</vnum>
+    </scripts>
+    <scripts>
+        <description>color command</description>
+        <script>ch.writeln(&quot;\033[01;30mCOLOR\033[0m - \033[30mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;31mCOLOR\033[0m - \033[31mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;32mCOLOR\033[0m - \033[32mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;33mCOLOR\033[0m - \033[33mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;34mCOLOR\033[0m - \033[34mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;35mCOLOR\033[0m - \033[35mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;36mCOLOR\033[0m - \033[36mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;37mCOLOR\033[0m - \033[37mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;38mCOLOR\033[0m - \033[38mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;39mCOLOR\033[0m - \033[39mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;40mCOLOR\033[0m - \033[40mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;41mCOLOR\033[0m - \033[41mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;42mCOLOR\033[0m - \033[42mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;43mCOLOR\033[0m - \033[43mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;44mCOLOR\033[0m - \033[44mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;45mCOLOR\033[0m - \033[45mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;46mCOLOR\033[0m - \033[46mCOLOR\033[0m&quot;);&#xD;
+ch.writeln(&quot;\033[01;47mCOLOR\033[0m - \033[47mCOLOR\033[0m&quot;);&#xD;
+&#xD;
+&#xD;
+</script>
+        <vnum>116</vnum>
+    </scripts>
+    <scripts>
+        <description>new script</description>
+        <script>// this is a new script</script>
+        <vnum>117</vnum>
+    </scripts>
+    <scripts>
+        <vnum>118</vnum>
+    </scripts>
+</scriptSet>
